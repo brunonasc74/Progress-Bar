@@ -3,6 +3,7 @@ package com.example.progressbar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SeekBar
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         buttonReset.setOnClickListener { v ->
             seekBar.progress = 0
+            Toast.makeText(applicationContext, "Thx for pressing me ;)", Toast.LENGTH_SHORT).show()
         }
 
     }
