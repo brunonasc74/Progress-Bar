@@ -13,9 +13,16 @@ class MainActivity : AppCompatActivity() {
         val inicialTextViewProgressY = textViewProgress.translationY
 
         seekBar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
-            override fun onProgressChanged(p0: SeekBar?, progress: Int, p2: Boolean) {
+            override fun onProgressChanged(p0: SeekBar?, progress: Int, user: Boolean) {
                 textViewProgress.text = progress.toString()
 
+                val travelDistance = (inicialTextViewProgressY + progress * resources.getDimension(R.dimen.text_anim_step) * -1)
+
+                textViewProgress.animate().translationY(travelDistance)
+
+                if(!user)
+                textViewProgress.animate().setDuration(500).rotationBy(360f)
+                    .translationY(inicialTextViewProgressY)
 
             }
 
@@ -27,6 +34,10 @@ class MainActivity : AppCompatActivity() {
 
             }
         })
+
+        buttonReset.setOnClickListener { v ->
+            seekBar.progress = 0
+        }
 
     }
 }
