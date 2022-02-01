@@ -10,19 +10,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val inicialTextViewProgressY = textViewProgress.translationY
+        val initialTextViewProgressY = textViewProgress.translationY
 
         seekBar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(p0: SeekBar?, progress: Int, user: Boolean) {
                 textViewProgress.text = progress.toString()
 
-                val travelDistance = (inicialTextViewProgressY + progress * resources.getDimension(R.dimen.text_anim_step) * -1)
+                val travelDistance = (initialTextViewProgressY + progress * resources.getDimension(R.dimen.text_anim_step) * -1)
 
                 textViewProgress.animate().translationY(travelDistance)
 
                 if(!user)
                 textViewProgress.animate().setDuration(500).rotationBy(360f)
-                    .translationY(inicialTextViewProgressY)
+                    .translationY(initialTextViewProgressY)
 
             }
 
